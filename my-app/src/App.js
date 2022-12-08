@@ -13,14 +13,14 @@ function App() {
 		meta: { erroredInputs },
 	} = useCreditCardValidator();
 
-  const {success, setSuccess} = useState(false)
+	const { success, setSuccess } = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (erroredInputs && success) {
-      return setSuccess(true)
-    }
-  }
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (erroredInputs && success) {
+			return setSuccess(true);
+		}
+	};
 
 	return (
 		<div className='form'>
@@ -38,7 +38,9 @@ function App() {
 						{...getCardNumberProps()}
 					/>
 					<svg {...getCardImageProps({ images })} />
-					<small className="error">{erroredInputs.cardNumber && erroredInputs.cardNumber}</small>
+					<small className='error'>
+						{erroredInputs.cardNumber && erroredInputs.cardNumber}
+					</small>
 					<InputGroup className='mb-3'>
 						<Form.Control
 							type='number'
@@ -47,6 +49,13 @@ function App() {
 						/>
 						<Form.Control type='number' placeholder='CVC' {...getCVCProps()} />
 					</InputGroup>
+					<small className='error'>
+						{erroredInputs.expiryDate && erroredInputs.expiryDate}
+					</small>
+          {'  '}
+					<small className='error'>
+						{erroredInputs.cvc && erroredInputs.cvc}
+					</small>
 
 					<Form.Group className='mb-3'>
 						<Form.Label className='text-muted'>Name on card</Form.Label>
@@ -60,7 +69,7 @@ function App() {
 							<option value='2'>United States</option>
 							<option value='3'>United States</option>
 						</Form.Select>
-						<Form.Control type='number' placeholder="ZIP" />
+						<Form.Control type='number' placeholder='ZIP' />
 					</Form.Group>
 				</Form.Group>
 				<Button variant='secondary' type='submit' className='mb-3'>
@@ -68,7 +77,7 @@ function App() {
 				</Button>
 				<p className='text-muted text-center'>Free returns and exchanges</p>
 			</Form>
-      {success ? 'SUCCESS' : null}
+			{success ? "SUCCESS" : null}
 		</div>
 	);
 }
